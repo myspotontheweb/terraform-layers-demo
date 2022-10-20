@@ -11,6 +11,9 @@ terraform {
     tfe = {
       version = "~> 0.37.0"
     }
+    random = {
+      version = "~> 3.4.3"
+    }
   }
 }
 
