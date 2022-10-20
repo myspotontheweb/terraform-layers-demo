@@ -26,3 +26,31 @@ resource "tfe_workspace" "base" {
   }
 }
 
+resource "tfe_workspace" "k8s-cluster" {
+  name         = "base-${var.environment}"
+  organization = data.tfe_organization.org.name
+  working_directory = "envs/dev/k8s-cluster"
+  auto_apply   = true
+  trigger_patterns = ["envs/dev/k8s-cluster/*"]
+
+  vcs_repo {
+    identifier      = "myspotontheweb/terraform-layers-demo"
+    branch          = "init-code"
+    oauth_token_id  = tfe_oauth_client.github.oauth_token_id
+  }
+}
+
+resource "tfe_workspace" "k8s-base" {
+  name         = "base-${var.environment}"
+  organization = data.tfe_organization.org.name
+  working_directory = "envs/dev/k8s-base"
+  auto_apply   = true
+  trigger_patterns = ["envs/dev/k8s-base/*"]
+
+  vcs_repo {
+    identifier      = "myspotontheweb/terraform-layers-demo"
+    branch          = "init-code"
+    oauth_token_id  = tfe_oauth_client.github.oauth_token_id
+  }
+}
+

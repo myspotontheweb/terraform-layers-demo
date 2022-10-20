@@ -3,7 +3,7 @@ terraform {
     organization = "oconnor17-demo"
 
     workspaces {
-      name = "base-dev"
+      name = "k8s-base-dev"
     }
   }
 
