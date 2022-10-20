@@ -10,7 +10,7 @@ resource "tfe_oauth_client" "base" {
   api_url          = "https://api.github.com"
   http_url         = "https://github.com"
   service_provider = "github"
-  oauth_token      = var.github-pat
+  oauth_token      = var.github_pat
 }
 
 resource "tfe_oauth_client" "k8s-cluster" {
@@ -18,7 +18,7 @@ resource "tfe_oauth_client" "k8s-cluster" {
   api_url          = "https://api.github.com"
   http_url         = "https://github.com"
   service_provider = "github"
-  oauth_token      = var.github-pat
+  oauth_token      = var.github_pat
 }
 
 resource "tfe_oauth_client" "k8s-base" {
@@ -26,7 +26,7 @@ resource "tfe_oauth_client" "k8s-base" {
   api_url          = "https://api.github.com"
   http_url         = "https://github.com"
   service_provider = "github"
-  oauth_token      = var.github-pat
+  oauth_token      = var.github_pat
 }
 
 resource "tfe_workspace" "base" {
