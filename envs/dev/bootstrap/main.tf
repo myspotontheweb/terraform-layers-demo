@@ -37,6 +37,7 @@ resource "tfe_oauth_client" "k8s-base" {
 resource "tfe_workspace" "base" {
   name         = "base-${var.environment}"
   organization = data.tfe_organization.org.name
+  terraform_version = local.terraform_version
   working_directory = "envs/${var.environment}/base"
   trigger_patterns  = ["envs/${var.environment}/base/*"]
   queue_all_runs    = false
@@ -52,6 +53,7 @@ resource "tfe_workspace" "base" {
 resource "tfe_workspace" "k8s-cluster" {
   name         = "k8s-cluster-${var.environment}"
   organization = data.tfe_organization.org.name
+  terraform_version = local.terraform_version
   working_directory = "envs/${var.environment}/k8s-cluster"
   trigger_patterns  = ["envs/${var.environment}/k8s-cluster/*"]
   queue_all_runs    = false
@@ -67,6 +69,7 @@ resource "tfe_workspace" "k8s-cluster" {
 resource "tfe_workspace" "k8s-base" {
   name         = "k8s-base-${var.environment}"
   organization = data.tfe_organization.org.name
+  terraform_version = local.terraform_version
   working_directory = "envs/${var.environment}/k8s-base"
   trigger_patterns  = ["envs/${var.environment}/k8s-base/*"]
   queue_all_runs    = false

@@ -13,3 +13,7 @@ variable "github_pat" {
   description = "Github Personal Access Token"
 }
 
+locals {
+  terraform_version = "1.3.3"
+}
+
