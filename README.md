@@ -47,6 +47,7 @@ export TF_VAR_github_pat=XXXXXX
 
 ```
 cd envs/dev/bootstrap
+
 terraform init
 terraform plan
 terraform apply
