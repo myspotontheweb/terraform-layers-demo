@@ -50,6 +50,8 @@ Set the following variable
 export TF_VAR_github_pat=XXXXXX
 ```
 
+Alternatively it can be entered as a variable on the bootstrap workspace.
+
 ## Build the project
 
 ```
