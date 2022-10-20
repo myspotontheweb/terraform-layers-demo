@@ -5,6 +5,9 @@ data "tfe_organization" "org" {
   name = var.organization
 }
 
+#
+# Credentials
+#
 resource "tfe_oauth_client" "base" {
   organization     = var.organization
   api_url          = "https://api.github.com"
@@ -29,11 +32,15 @@ resource "tfe_oauth_client" "k8s-base" {
   oauth_token      = var.github_pat
 }
 
+#
+# Workspaces
+#
 resource "tfe_workspace" "base" {
   name         = "base-${var.environment}"
   organization = data.tfe_organization.org.name
   working_directory = "envs/${var.environment}/base"
-  trigger_patterns = ["envs/${var.environment}/base/*"]
+  trigger_patterns  = ["envs/${var.environment}/base/*"]
+  queue_all_runs    = false
   auto_apply   = true
 
   vcs_repo {
@@ -47,7 +54,8 @@ resource "tfe_workspace" "k8s-cluster" {
   name         = "k8s-cluster-${var.environment}"
   organization = data.tfe_organization.org.name
   working_directory = "envs/${var.environment}/k8s-cluster"
-  trigger_patterns = ["envs/${var.environment}/k8s-cluster/*"]
+  trigger_patterns  = ["envs/${var.environment}/k8s-cluster/*"]
+  queue_all_runs    = false
   auto_apply   = true
 
   vcs_repo {
@@ -61,7 +69,8 @@ resource "tfe_workspace" "k8s-base" {
   name         = "k8s-base-${var.environment}"
   organization = data.tfe_organization.org.name
   working_directory = "envs/${var.environment}/k8s-base"
-  trigger_patterns = ["envs/${var.environment}/k8s-base/*"]
+  trigger_patterns  = ["envs/${var.environment}/k8s-base/*"]
+  queue_all_runs    = false
   auto_apply   = true
 
   vcs_repo {

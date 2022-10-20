@@ -29,13 +29,19 @@ terraform login
 
 ### Create a github Personal Access Token
 
-Following the Github intructions to generate a 
+Following the Github intructions create a Personal access token 
 
 * https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
 
-Notes:
+with the following permissions
 
-* Token will need "Read + Write" permissions for Webhooks (in order to trigger a workspace)
+
+| Permission | Access         |
+| ---------- | -------------- |
+| Contents   | Read-only      |
+| Metadata   | Read-only      |
+| Webhooks   | Read and write |
+
 
 Set the following variable
 
