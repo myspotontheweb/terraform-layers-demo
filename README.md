@@ -4,6 +4,12 @@ Explore layered infrastructure using Terraform Cloud
 
 ## Setup
 
+### Login to Terraform Cloud
+
+```
+terraform login
+```
+
 ### Create "bootstrap" namespace
 
 Create a bootstrap workspace for the environment. 
@@ -21,11 +27,6 @@ Finally set the workspace to have a "local" execution mode:
 
 * https://app.terraform.io/app/$ORG/workspaces/$WORKSPACE/settings/general
 
-### Login to Terraform Cloud
-
-```
-terraform login
-```
 
 ### Create a github Personal Access Token
 
