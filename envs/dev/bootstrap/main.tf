@@ -96,17 +96,18 @@ provider "multispace" {}
 resource "multispace_run" "base" {
   organization = data.tfe_organization.org.name
   workspace    = "base-${var.environment}"
+  depends_on   = [tfe_workspace.base]
 }
 
 resource "multispace_run" "k8s-cluster" {
   organization = data.tfe_organization.org.name
   workspace    = "k8s-cluster-${var.environment}"
-  depends_on   = [multispace_run.base]
+  depends_on   = [tfe_workspace.k8s-cluster, multispace_run.base]
 }
 
 resource "multispace_run" "k8s-base" {
   organization = data.tfe_organization.org.name
   workspace    = "k8s-base-${var.environment}"
-  depends_on   = [multispace_run.k8s-cluster]
+  depends_on   = [tfe_workspace.k8s-base, multispace_run.k8s-cluster]
 }
 
