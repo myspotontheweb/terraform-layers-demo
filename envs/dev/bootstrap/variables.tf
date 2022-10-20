@@ -8,3 +8,8 @@ variable "environment" {
   description = "The environment id which the workspace is associated with"
 }
 
+variable "github-pat" {
+  type = string
+  description = "Github Personal Access Token"
+}
+
