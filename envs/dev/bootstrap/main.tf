@@ -32,8 +32,8 @@ resource "tfe_oauth_client" "k8s-base" {
 resource "tfe_workspace" "base" {
   name         = "base-${var.environment}"
   organization = data.tfe_organization.org.name
-  working_directory = "envs/dev/base"
-  trigger_patterns = ["envs/dev/base/*"]
+  working_directory = "envs/${var.environment}/base"
+  trigger_patterns = ["envs/${var.environment}/base/*"]
   auto_apply   = true
 
   vcs_repo {
@@ -46,8 +46,8 @@ resource "tfe_workspace" "base" {
 resource "tfe_workspace" "k8s-cluster" {
   name         = "k8s-cluster-${var.environment}"
   organization = data.tfe_organization.org.name
-  working_directory = "envs/dev/k8s-cluster"
-  trigger_patterns = ["envs/dev/k8s-cluster/*"]
+  working_directory = "envs/${var.environment}/k8s-cluster"
+  trigger_patterns = ["envs/${var.environment}/k8s-cluster/*"]
   auto_apply   = true
 
   vcs_repo {
@@ -60,8 +60,8 @@ resource "tfe_workspace" "k8s-cluster" {
 resource "tfe_workspace" "k8s-base" {
   name         = "k8s-base-${var.environment}"
   organization = data.tfe_organization.org.name
-  working_directory = "envs/dev/k8s-base"
-  trigger_patterns = ["envs/dev/k8s-base/*"]
+  working_directory = "envs/${var.environment}/k8s-base"
+  trigger_patterns = ["envs/${var.environment}/k8s-base/*"]
   auto_apply   = true
 
   vcs_repo {
