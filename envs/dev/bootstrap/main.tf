@@ -1,5 +1,4 @@
-provider "tfe" {
-}
+provider "tfe" {}
 
 data "tfe_organization" "org" {
   name = var.organization
@@ -78,5 +77,27 @@ resource "tfe_workspace" "k8s-base" {
     branch          = "main"
     oauth_token_id  = tfe_oauth_client.k8s-base.oauth_token_id
   }
+}
+
+#
+# Configure the run order
+#
+provider "multispace" {}
+
+resource "multispace_run" "base" {
+  organization = data.tfe_organization.org.name
+  workspace    = "base-${var.environment}"
+}
+
+resource "multispace_run" "k8s-cluster" {
+  organization = data.tfe_organization.org.name
+  workspace    = "k8s-cluster-${var.environment}"
+  depends_on   = [multispace_run.base]
+}
+
+resource "multispace_run" "k8s-base" {
+  organization = data.tfe_organization.org.name
+  workspace    = "k8s-base-${var.environment}"
+  depends_on   = [multispace_run.k8s-cluster]
 }
 
