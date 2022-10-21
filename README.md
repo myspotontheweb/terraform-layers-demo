@@ -10,9 +10,13 @@ Explore layered infrastructure using Terraform Cloud
 terraform login
 ```
 
-### Create "bootstrap" namespace
+Notes:
 
-Create a bootstrap workspace for the environment. 
+* You will need organisation "OWNER" role to create workspaces within a Terraform cloud organisation.
+
+### Create "bootstrap" workspace
+
+Create a bootstrap workspace for the environment, via the Terraform Cloud UI
 
 * https://app.terraform.io/app/$ORG/workspaces/new
 
@@ -23,10 +27,9 @@ Give the namespace one of the following names:
 * bootstrap-dev
 * bootstrap-prod
 
-Finally set the workspace to have a "local" execution mode:
+Set the workspace to have a "local" execution mode. We want to run Terraform from the local laptop, which has the credentials to update TFC ("terraform login" above)
 
 * https://app.terraform.io/app/$ORG/workspaces/$WORKSPACE/settings/general
-
 
 ### Create a github Personal Access Token
 
