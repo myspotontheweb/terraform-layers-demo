@@ -33,11 +33,12 @@ Set the workspace to have a "local" execution mode. We want to run Terraform fro
 
 ### Create a github Personal Access Token
 
-Following the Github intructions create a Personal access token 
+We'll need a Github PAT in order to setup webhooks for each workspace, in order to detect commits in the source repo(s)
+Follow this documentation
 
 * https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
 
-with the following permissions
+The token will need the following permissions:
 
 
 | Permission | Access         |
@@ -47,7 +48,7 @@ with the following permissions
 | Webhooks   | Read and write |
 
 
-Set the following variable
+To use the Token, set the following environment variable:
 
 ```
 export TF_VAR_github_pat=XXXXXX
